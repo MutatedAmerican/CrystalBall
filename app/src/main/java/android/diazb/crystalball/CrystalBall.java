@@ -35,8 +35,8 @@ public class CrystalBall extends Activity {
             float delta=currentAcceleration-previousAcceleration;
             acceleration=acceleration*0.9f+delta;
 
-            if(acceleration >10){
-                Toast toast=Toast.makeText(getApplication(), "And now, the results...", Toast.LENGTH_SHORT);
+            if(acceleration >10) {
+                Toast toast = Toast.makeText(getApplication(), "And now, the results...", Toast.LENGTH_SHORT);
                 toast.show();
             }
         }

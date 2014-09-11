@@ -20,6 +20,7 @@ public class Predictions {
     }
 
     public String getPrediction() {
-            return answers[1];
+
+        return answers[1];
     }
 }
