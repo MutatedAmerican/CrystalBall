@@ -6,10 +6,13 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.FloatMath;
 import android.widget.TextView;
 import android.widget.Toast;
+
+
 
 
 public class CrystalBall extends Activity {
@@ -38,6 +41,9 @@ public class CrystalBall extends Activity {
             if(acceleration >10) {
                 Toast toast = Toast.makeText(getApplication(), "And now, the results...", Toast.LENGTH_SHORT);
                 toast.show();
+                answerText.setText(Predictions.get().getPrediction());
+                MediaPlayer mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.crystal_ball);
+                mediaPlayer.start();
             }
         }
 
@@ -59,7 +65,6 @@ public class CrystalBall extends Activity {
         previousAcceleration=SensorManager.GRAVITY_EARTH;
 
         answerText= (TextView) findViewById(R.id.answerText);
-        answerText.setText(Predictions.get().getPrediction());
 
     }
 
