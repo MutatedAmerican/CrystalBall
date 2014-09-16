@@ -22,6 +22,9 @@
         android:textStyle="bold"
         android:layout_centerVertical="true"
         android:paddingTop="750px"
+        android:verticalSpacing="5dp"
+        android:horizontalSpacing="5dp"
+        android:numColumns="1"
         />
 
 </RelativeLayout>
