@@ -9,6 +9,8 @@ import android.hardware.SensorManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.FloatMath;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -52,21 +54,44 @@ public class CrystalBall extends Activity {
 
         }
     };
+
+    public class FadeInActivity extends Activity{
+
+        TextView txtMessage;
+
+        // Animation
+        Animation animFade_in;
+
+        @Override
+        protected void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_crystal_ball);
+
+            txtMessage = (TextView) findViewById(R.id.answerText);
+
+            // load the animation
+            animFade_in = AnimationUtils.loadAnimation(getApplicationContext(),
+                    R.anim.fade_in);
+        }
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_crystal_ball);
 
-        sensorManager=(SensorManager)getSystemService(Context. SENSOR_SERVICE);
-        accelerometer=sensorManager.getDefaultSensor(Sensor. TYPE_ACCELEROMETER);
+        sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+        accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
 
-        acceleration=0.0f;
-        currentAcceleration=SensorManager.GRAVITY_EARTH;
-        previousAcceleration=SensorManager.GRAVITY_EARTH;
 
-        answerText= (TextView) findViewById(R.id.answerText);
+        acceleration = 0.0f;
+        currentAcceleration = SensorManager.GRAVITY_EARTH;
+        previousAcceleration = SensorManager.GRAVITY_EARTH;
 
+        answerText = (TextView) findViewById(R.id.answerText);
+        // start the animation
+        //answerText.startAnimation(true);
     }
+
 
     @Override
     protected void onResume() {
@@ -79,4 +104,5 @@ public class CrystalBall extends Activity {
         super.onPause();
         sensorManager.unregisterListener(sensorListener);
     }
+
 }
