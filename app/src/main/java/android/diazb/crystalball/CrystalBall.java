@@ -12,7 +12,6 @@ import android.util.FloatMath;
 import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 import android.widget.Toast;
-import java.util.Random;
 
 
 public class CrystalBall extends Activity {
@@ -45,9 +44,6 @@ public class CrystalBall extends Activity {
 
                 // start the animation
                 answerText.startAnimation(AnimationUtils.loadAnimation(CrystalBall.this, android.R.anim.fade_in));
-
-                int rando=(int) ((Math.random()*10+1));
-
             }
         }
 
@@ -70,17 +66,6 @@ public class CrystalBall extends Activity {
         previousAcceleration = SensorManager.GRAVITY_EARTH;
 
         answerText = (TextView) findViewById(R.id.answerText);
-
-    }
-
-    public static void main(String[] args){
-        Random r = new Random();
-        int number;
-
-        for(int counter=1; counter<=10;counter++){
-            number=1+r.nextInt(6);
-            System.out.printIn(number+"");
-        }
     }
 
     @Override

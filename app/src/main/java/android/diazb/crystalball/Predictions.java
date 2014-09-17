@@ -10,7 +10,10 @@ public class Predictions {
     private Predictions() {
         answers=new String[] {
                 "You're wishes will come true.",
-                "You're wished will NEVER come true."
+                "You're wishes will NEVER come true.",
+                "You're wishes will MAYBE come true.",
+                "You're wishes will come true, when pigs fly.",
+                "That depends, are you single?"
         };
     }
 
@@ -23,7 +26,10 @@ public class Predictions {
 
     public String getPrediction() {
 
-        return answers[1];
+        Random answer = new Random();
+
+
+        return answers[answer.nextInt(5)];
 
 
     }
