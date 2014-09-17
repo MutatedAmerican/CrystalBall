@@ -1,5 +1,7 @@
 package android.diazb.crystalball;
 
+import java.util.Random;
+
 public class Predictions {
 
     private static Predictions predictions;
@@ -22,5 +24,7 @@ public class Predictions {
     public String getPrediction() {
 
         return answers[1];
+
+
     }
 }

@@ -9,21 +9,17 @@ import android.hardware.SensorManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.FloatMath;
-import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 import android.widget.Toast;
-
-
+import java.util.Random;
 
 
 public class CrystalBall extends Activity {
 
     private TextView answerText;
-
     private SensorManager sensorManager;
     private Sensor accelerometer;
-
     private float acceleration;
     private float currentAcceleration;
     private float previousAcceleration;
@@ -40,12 +36,18 @@ public class CrystalBall extends Activity {
             float delta=currentAcceleration-previousAcceleration;
             acceleration=acceleration*0.9f+delta;
 
-            if(acceleration >10) {
+            if(acceleration >20) {
                 Toast toast = Toast.makeText(getApplication(), "And now, the results...", Toast.LENGTH_SHORT);
                 toast.show();
                 answerText.setText(Predictions.get().getPrediction());
                 MediaPlayer mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.crystal_ball);
                 mediaPlayer.start();
+
+                // start the animation
+                answerText.startAnimation(AnimationUtils.loadAnimation(CrystalBall.this, android.R.anim.fade_in));
+
+                int rando=(int) ((Math.random()*10+1));
+
             }
         }
 
@@ -55,25 +57,6 @@ public class CrystalBall extends Activity {
         }
     };
 
-    public class FadeInActivity extends Activity{
-
-        TextView txtMessage;
-
-        // Animation
-        Animation animFade_in;
-
-        @Override
-        protected void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_crystal_ball);
-
-            txtMessage = (TextView) findViewById(R.id.answerText);
-
-            // load the animation
-            animFade_in = AnimationUtils.loadAnimation(getApplicationContext(),
-                    R.anim.fade_in);
-        }
-    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -82,16 +65,23 @@ public class CrystalBall extends Activity {
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
 
-
         acceleration = 0.0f;
         currentAcceleration = SensorManager.GRAVITY_EARTH;
         previousAcceleration = SensorManager.GRAVITY_EARTH;
 
         answerText = (TextView) findViewById(R.id.answerText);
-        // start the animation
-        //answerText.startAnimation(true);
+
     }
 
+    public static void main(String[] args){
+        Random r = new Random();
+        int number;
+
+        for(int counter=1; counter<=10;counter++){
+            number=1+r.nextInt(6);
+            System.out.printIn(number+"");
+        }
+    }
 
     @Override
     protected void onResume() {
