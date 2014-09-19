@@ -12,13 +12,10 @@ public class Predictions {
                 "NO",
                 "YES",
                 "Ask Bill Nye the Science Guy",
-                "Wow, that was so sicknessing, I have a virus",
-                "KHAN!",
+                "Wow, that was such a stupid question, my IQ just lowered",
+                "WHY WOULD YOU ASK THAT",
                 "That depends, are you single?",
-                "Don't ask me, ask Tom Cruise",
-                "Yes, if you the Dance of the Sugar Plum Fairy",
-                "Yeah sure, whatever",
-                "10 OUTTA 10-IGN"
+                "Don't ask me, ask Moises"
 
         };
     }
@@ -34,7 +31,7 @@ public class Predictions {
 
         Random answer = new Random();
 
-        return answers[answer.nextInt(10)];
+        return answers[answer.nextInt(8)];
 
 
     }

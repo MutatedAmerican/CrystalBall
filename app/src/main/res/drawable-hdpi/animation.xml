@@ -17,7 +17,7 @@
     <item android:drawable="@drawable/ball12" android:duration="50"></item>
     <item android:drawable="@drawable/ball13" android:duration="50"></item>
     <item android:drawable="@drawable/ball14" android:duration="50"></item>
-    <item android:drawable="@drawable/pedo1" android:duration="50"></item>
+    <item android:drawable="@drawable/pedobear" android:duration="5"></item>
     <item android:drawable="@drawable/ball16" android:duration="50"></item>
     <item android:drawable="@drawable/ball17" android:duration="50"></item>
     <item android:drawable="@drawable/ball18" android:duration="50"></item>
