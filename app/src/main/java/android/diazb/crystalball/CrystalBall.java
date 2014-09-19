@@ -2,6 +2,7 @@ package android.diazb.crystalball;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.drawable.AnimationDrawable;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -10,6 +11,7 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.FloatMath;
 import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,12 +37,24 @@ public class CrystalBall extends Activity {
             float delta=currentAcceleration-previousAcceleration;
             acceleration=acceleration*0.9f+delta;
 
-            if(acceleration >20) {
+            final ImageView img=(ImageView)findViewById(R.id.animation);
+            img.setBackgroundResource(R.drawable.animation);
+
+            final AnimationDrawable animation=(AnimationDrawable)img.getBackground();
+
+            if(acceleration >10) {
+                animation.start();
                 Toast toast = Toast.makeText(getApplication(), "And now, the results...", Toast.LENGTH_SHORT);
                 toast.show();
                 answerText.setText(Predictions.get().getPrediction());
                 MediaPlayer mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.crystal_ball);
                 mediaPlayer.start();
+
+                if(animation.isRunning())
+                {
+                    animation.stop();
+                    animation.start();
+                }
 
                 // start the animation
                 answerText.startAnimation(AnimationUtils.loadAnimation(CrystalBall.this, android.R.anim.fade_in));
