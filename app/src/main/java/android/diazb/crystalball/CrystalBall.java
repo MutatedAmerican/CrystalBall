@@ -14,6 +14,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import java.util.Random;
 
 
 public class CrystalBall extends Activity {
@@ -24,6 +25,14 @@ public class CrystalBall extends Activity {
     private float acceleration;
     private float currentAcceleration;
     private float previousAcceleration;
+
+    private int[] mPhotoIds = new int [] { R.drawable.ball01,
+            R.drawable.ball02, R.drawable.ball03, R.drawable.ball04, R.drawable.ball05,
+            R.drawable.ball06, R.drawable.ball07 };
+
+    private static final Random rgenerator = new Random();
+
+    private ImageView iv;
 
     private final SensorEventListener sensorListener= new SensorEventListener() {
         @Override
@@ -42,7 +51,7 @@ public class CrystalBall extends Activity {
 
             final AnimationDrawable animation=(AnimationDrawable)img.getBackground();
 
-            if(acceleration >10) {
+            if(acceleration >20) {
                 animation.start();
                 Toast toast = Toast.makeText(getApplication(), "And now, the results...", Toast.LENGTH_SHORT);
                 toast.show();
@@ -80,6 +89,10 @@ public class CrystalBall extends Activity {
         previousAcceleration = SensorManager.GRAVITY_EARTH;
 
         answerText = (TextView) findViewById(R.id.answerText);
+
+        Integer q = mPhotoIds[rgenerator.nextInt(mPhotoIds.length)];
+        iv = (ImageView) findViewById(R.id.animation);
+        iv.setImageResource(q);
     }
 
     @Override

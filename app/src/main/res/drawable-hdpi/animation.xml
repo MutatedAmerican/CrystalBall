@@ -3,29 +3,10 @@
 <animation-list xmlns:android="http://schemas.android.com/apk/res/android"
     android:oneshot="true">
 
-    <item android:drawable="@drawable/ball01" android:duration="0"></item>
-    <item android:drawable="@drawable/ball02" android:duration="50"></item>
-    <item android:drawable="@drawable/ball03" android:duration="50"></item>
-    <item android:drawable="@drawable/ball04" android:duration="50"></item>
-    <item android:drawable="@drawable/ball05" android:duration="50"></item>
-    <item android:drawable="@drawable/ball06" android:duration="50"></item>
-    <item android:drawable="@drawable/ball07" android:duration="50"></item>
-    <item android:drawable="@drawable/ball08" android:duration="50"></item>
-    <item android:drawable="@drawable/ball09" android:duration="50"></item>
-    <item android:drawable="@drawable/ball10" android:duration="50"></item>
-    <item android:drawable="@drawable/ball11" android:duration="50"></item>
-    <item android:drawable="@drawable/ball12" android:duration="50"></item>
-    <item android:drawable="@drawable/ball13" android:duration="50"></item>
-    <item android:drawable="@drawable/ball14" android:duration="50"></item>
-    <item android:drawable="@drawable/pedobear" android:duration="5"></item>
-    <item android:drawable="@drawable/ball16" android:duration="50"></item>
-    <item android:drawable="@drawable/ball17" android:duration="50"></item>
-    <item android:drawable="@drawable/ball18" android:duration="50"></item>
-    <item android:drawable="@drawable/ball19" android:duration="50"></item>
-    <item android:drawable="@drawable/ball20" android:duration="50"></item>
-    <item android:drawable="@drawable/ball21" android:duration="50"></item>
-    <item android:drawable="@drawable/ball22" android:duration="50"></item>
-    <item android:drawable="@drawable/ball23" android:duration="50"></item>
-    <item android:drawable="@drawable/ball24" android:duration="50"></item>
+    <item android:drawable="@drawable/fortune" android:duration="0"></item>
+    <item android:drawable="@drawable/jesus" android:duration="10"></item>
+    <item android:drawable="@drawable/thinking" android:duration="2500"></item>
+    <item android:drawable="@drawable/realize" android:duration="500"></item>
+    <item android:drawable="@drawable/really" android:duration="50"></item>
 
 </animation-list>
