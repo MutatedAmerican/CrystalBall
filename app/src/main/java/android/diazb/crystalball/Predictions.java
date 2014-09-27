@@ -10,16 +10,16 @@ public class Predictions {
 
         // The selection of random predictions the app shall "predict"
         answers = new String[] {
-                ":)",
-                ":(",
-                ":-/",
-                ":-??",
-                "<3",
-                "~:>",
-                "[-O<",
-                "[-X",
-                "o.O",
-                "(y)",
+                "Yes",
+                "No",
+                "Don't ask me, ask Tinkerbell",
+                "First, find the Pendant of Courage",
+                "First, find the Pendant of Wisdom",
+                "First, find the Pendant of Power",
+                "HELP ME!",
+                "You don't deserve a second chance",
+                "Talk to Mario",
+                "Maybe",
         };
     }
 

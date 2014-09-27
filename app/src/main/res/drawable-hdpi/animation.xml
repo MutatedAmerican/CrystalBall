@@ -3,10 +3,28 @@
 <animation-list xmlns:android="http://schemas.android.com/apk/res/android"
     android:oneshot="true">
 
-    <item android:drawable="@drawable/fortune" android:duration="0"></item>
-    <item android:drawable="@drawable/jesus" android:duration="50"></item>
-    <item android:drawable="@drawable/thinking" android:duration="1000"></item>
-    <item android:drawable="@drawable/realize" android:duration="500"></item>
-    <item android:drawable="@drawable/ayfkm" android:duration="0"></item>
+    <item android:drawable="@drawable/iamlink2" android:duration="0"></item>
+    <item android:drawable="@drawable/iamlink3" android:duration="50"></item>
+    <item android:drawable="@drawable/iamlink4" android:duration="50"></item>
+    <item android:drawable="@drawable/iamlink5" android:duration="50"></item>
+    <item android:drawable="@drawable/iamlink6" android:duration="50"></item>
+    <item android:drawable="@drawable/iamlink7" android:duration="50"></item>
+    <item android:drawable="@drawable/iamlink8" android:duration="50"></item>
+    <item android:drawable="@drawable/iamlink9" android:duration="50"></item>
+    <item android:drawable="@drawable/iamlink10" android:duration="50"></item>
+    <item android:drawable="@drawable/iamlink11" android:duration="50"></item>
+    <item android:drawable="@drawable/iamlink12" android:duration="50"></item>
+    <item android:drawable="@drawable/iamlink4" android:duration="50"></item>
+    <item android:drawable="@drawable/iamlink5" android:duration="50"></item>
+    <item android:drawable="@drawable/iamlink6" android:duration="50"></item>
+    <item android:drawable="@drawable/iamlink7" android:duration="50"></item>
+    <item android:drawable="@drawable/iamlink8" android:duration="50"></item>
+    <item android:drawable="@drawable/iamlink9" android:duration="50"></item>
+    <item android:drawable="@drawable/iamlink10" android:duration="50"></item>
+    <item android:drawable="@drawable/iamlink11" android:duration="50"></item>
+    <item android:drawable="@drawable/iamlink12" android:duration="50"></item>
+    <item android:drawable="@drawable/iamlink3" android:duration="300"></item>
+    <item android:drawable="@drawable/iamlink25" android:duration="400"></item>
+    <item android:drawable="@drawable/iamlink1" android:duration="0"></item>
 
 </animation-list>
