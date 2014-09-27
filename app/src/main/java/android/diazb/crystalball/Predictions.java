@@ -1,5 +1,4 @@
 package android.diazb.crystalball;
-
 import java.util.Random;
 
 public class Predictions {
@@ -8,30 +7,37 @@ public class Predictions {
     private String[] answers;
 
     private Predictions() {
-        answers=new String[] {
-                "NO",
-                "YES",
-                "Ask Bill Nye the Science Guy",
-                "My IQ just lowered because of your question",
-                "WHY WOULD YOU ASK THAT?",
-                "That depends, are you single?",
-                "Don't ask me, ask Moises"
+
+        // The selection of random predictions the app shall "predict"
+        answers = new String[] {
+                ":)",
+                ":(",
+                ":-/",
+                ":-??",
+                "<3",
+                "~:>",
+                "[-O<",
+                "[-X",
+                "o.O",
+                "(y)",
         };
     }
 
+    //checks if the predictions variable is set to null
     public static Predictions get(){
-        if(predictions==null) {
-            predictions=new Predictions();
+        if(predictions == null){
+            predictions = new Predictions();
         }
-           return predictions;
+        return predictions;
     }
 
-    public String getPrediction() {
+    // Sends back the "prediction" to the CrystalBall.java
+    public String getPredictions() {
 
-        Random answer = new Random();
+        //Generates a random number to select an answer from
+        Random prediction = new Random();
 
-        return answers[answer.nextInt(8)];
-
-
+        return answers[prediction.nextInt(11)];
     }
+
 }

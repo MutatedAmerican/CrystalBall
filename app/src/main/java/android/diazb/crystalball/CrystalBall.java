@@ -9,65 +9,117 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.util.FloatMath;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-import java.util.Random;
-
 
 public class CrystalBall extends Activity {
 
     private TextView answerText;
+
     private SensorManager sensorManager;
     private Sensor accelerometer;
+
     private float acceleration;
     private float currentAcceleration;
     private float previousAcceleration;
 
-    private int[] mPhotoIds = new int [] { R.drawable.ball01,
-            R.drawable.ball02, R.drawable.ball03, R.drawable.ball04, R.drawable.ball05,
-            R.drawable.ball06, R.drawable.ball07 };
+    long currentTime;
+    long previousTime;
+    long delay;
+    long elapsed;
 
-    private static final Random rgenerator = new Random();
 
-    private ImageView iv;
-
-    private final SensorEventListener sensorListener= new SensorEventListener() {
+    private final SensorEventListener sensorListener = new SensorEventListener() {
         @Override
         public void onSensorChanged(SensorEvent event) {
-            float x=event.values[0];
-            float y=event.values[1];
-            float z=event.values[2];
 
-            previousAcceleration=currentAcceleration;
-            currentAcceleration= FloatMath.sqrt(x*x+y*y+z*z);
-            float delta=currentAcceleration-previousAcceleration;
-            acceleration=acceleration*0.9f+delta;
+            float x = event.values[0];
+            float y = event.values[1];
+            float z = event.values[2];
 
-            final ImageView img=(ImageView)findViewById(R.id.animation);
+
+            previousTime = currentTime;
+            currentTime = System.currentTimeMillis();
+            elapsed = currentTime - previousTime;
+            delay = delay + elapsed;
+
+            previousAcceleration = currentAcceleration;
+            currentAcceleration = FloatMath.sqrt(x * x + y * y + z * z );
+            float delta = currentAcceleration - previousAcceleration;
+            acceleration = acceleration * 0.9f + delta;
+
+            ImageView img=(ImageView)findViewById(R.id.animation);
             img.setBackgroundResource(R.drawable.animation);
 
-            final AnimationDrawable animation=(AnimationDrawable)img.getBackground();
+            AnimationDrawable animation=(AnimationDrawable)img.getBackground();
 
-            if(acceleration >20) {
-                animation.start();
-                Toast toast = Toast.makeText(getApplication(), "And now, the results...", Toast.LENGTH_SHORT);
-                toast.show();
-                answerText.setText(Predictions.get().getPrediction());
-                MediaPlayer mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.crystal_ball);
+
+            img = (ImageView) findViewById(R.id.animation);
+            img.setBackgroundResource(R.drawable.animation);
+
+            animation = (AnimationDrawable) img.getBackground();
+
+            if(acceleration > 20 && delay >= 4500) {
+                final MediaPlayer mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.crystal_ball);
                 mediaPlayer.start();
 
-                if(animation.isRunning())
-                {
+                if (animation.isRunning()) {
+
                     animation.stop();
                     animation.start();
                 }
 
-                // start the animation
-                answerText.startAnimation(AnimationUtils.loadAnimation(CrystalBall.this, android.R.anim.fade_in));
+                else {
+                    animation.start();
+
+                }
+
+                new CountDownTimer(1700, 1000) {
+
+                    public void onTick(long millisUntilFinished) {
+                    }
+
+                    public void onFinish() {
+
+                        answerText = (TextView) findViewById(R.id.answerText);
+                        answerText.setText(Predictions.get().getPredictions());
+
+                        answerText.startAnimation(AnimationUtils.loadAnimation(CrystalBall.this, android.R.anim.fade_in));
+
+                        new CountDownTimer(2500, 1000) {
+
+                            public void onTick(long millisUntilFinished) {
+                            }
+
+                            public void onFinish() {
+
+                                answerText.startAnimation(AnimationUtils.loadAnimation(CrystalBall.this, android.R.anim.fade_out));
+
+                                new CountDownTimer(350, 1000) {
+
+                                    public void onTick(long millisUntilFinished) {
+                                    }
+
+                                    public void onFinish() {
+
+                                        answerText.setText("");
+
+                                    }
+                                }.start();
+
+                            }
+                        }.start();
+
+                    }
+                }.start();
+
+                delay = 0;
+
             }
+
         }
 
         @Override
@@ -81,18 +133,17 @@ public class CrystalBall extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_crystal_ball);
 
-        sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+        delay = 5000;
+        previousTime = System.currentTimeMillis();
+        currentTime = System.currentTimeMillis();
+
+        sensorManager = (SensorManager)getSystemService (Context.SENSOR_SERVICE);
         accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
 
         acceleration = 0.0f;
         currentAcceleration = SensorManager.GRAVITY_EARTH;
         previousAcceleration = SensorManager.GRAVITY_EARTH;
 
-        answerText = (TextView) findViewById(R.id.answerText);
-
-        Integer q = mPhotoIds[rgenerator.nextInt(mPhotoIds.length)];
-        iv = (ImageView) findViewById(R.id.animation);
-        iv.setImageResource(q);
     }
 
     @Override
@@ -106,5 +157,4 @@ public class CrystalBall extends Activity {
         super.onPause();
         sensorManager.unregisterListener(sensorListener);
     }
-
 }

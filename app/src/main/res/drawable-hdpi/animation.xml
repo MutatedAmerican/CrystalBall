@@ -4,9 +4,9 @@
     android:oneshot="true">
 
     <item android:drawable="@drawable/fortune" android:duration="0"></item>
-    <item android:drawable="@drawable/jesus" android:duration="10"></item>
-    <item android:drawable="@drawable/thinking" android:duration="2500"></item>
+    <item android:drawable="@drawable/jesus" android:duration="50"></item>
+    <item android:drawable="@drawable/thinking" android:duration="1000"></item>
     <item android:drawable="@drawable/realize" android:duration="500"></item>
-    <item android:drawable="@drawable/really" android:duration="50"></item>
+    <item android:drawable="@drawable/ayfkm" android:duration="0"></item>
 
 </animation-list>
