@@ -21,6 +21,7 @@ public class CrystalBall extends Activity {
 
     private SensorManager sensorManager;
     private Sensor accelerometer;
+    private MediaPlayer background;
 
     private float acceleration;
     private float currentAcceleration;
@@ -54,8 +55,8 @@ public class CrystalBall extends Activity {
             ImageView img=(ImageView)findViewById(R.id.animation);
             img.setBackgroundResource(R.drawable.animation);
 
-            AnimationDrawable animation=(AnimationDrawable)img.getBackground();
 
+            AnimationDrawable animation=(AnimationDrawable)img.getBackground();
 
             img = (ImageView) findViewById(R.id.animation);
             img.setBackgroundResource(R.drawable.animation);
@@ -63,8 +64,22 @@ public class CrystalBall extends Activity {
             animation = (AnimationDrawable) img.getBackground();
 
             if(acceleration > 20 && delay >= 4500) {
-                final MediaPlayer mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.crystal_ball);
-                mediaPlayer.start();
+
+                new CountDownTimer(1500,1000)
+                {
+                    public void onTick(long millisUntilFinished){
+
+                    }
+
+                    public void onFinish(){
+
+                        final MediaPlayer mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.fairy);
+                        mediaPlayer.start();
+
+                    }
+
+                }.start();
+
 
                 if (animation.isRunning()) {
 
@@ -144,6 +159,8 @@ public class CrystalBall extends Activity {
         currentAcceleration = SensorManager.GRAVITY_EARTH;
         previousAcceleration = SensorManager.GRAVITY_EARTH;
 
+        background=MediaPlayer.create(getApplicationContext(), R.raw.linktheme);
+        background.start();
     }
 
     @Override
@@ -156,5 +173,6 @@ public class CrystalBall extends Activity {
     protected void onPause() {
         super.onPause();
         sensorManager.unregisterListener(sensorListener);
+        background.stop();
     }
 }
